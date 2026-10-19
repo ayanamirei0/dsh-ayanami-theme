@@ -1,0 +1,8 @@
+# Bundle patch for dsh-ayanami-theme.
+#
+# The package declares `dsh.bundle.patch` in package.json. Adding it to the
+# profile's `dsh.profile.bundles` mounts this insert row, which starts the
+# client-only theme plugin.
+- insert:
+    - id: dsh-ayanami-theme
+      name: dsh-ayanami-theme

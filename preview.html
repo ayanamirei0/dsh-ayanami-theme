@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<title>Ayanami theme preview</title>
+<style>
+  :root {
+    --bg-base: rgba(6,11,18,0.58);
+    --layer-1: rgba(12,21,32,0.84);
+    --layer-2: rgba(17,29,43,0.88);
+    --layer-3: rgba(23,38,55,0.90);
+    --sidebar: rgba(8,15,24,0.72);
+    --input: rgba(12,22,34,0.86);
+    --bubble: rgba(21,36,52,0.80);
+    --menu: rgba(8,15,24,0.97);
+    --text: #e9f3ff;
+    --text-2: #b8cce1;
+    --text-3: #8fa8c0;
+    --border-1: rgba(140,200,255,0.14);
+    --border-2: rgba(140,200,255,0.22);
+    --accent: #8cc8ff;
+    --accent-strong: #2f6fb5;
+  }
+  * { box-sizing: border-box; }
+  html, body { height: 100%; margin: 0; }
+  body {
+    font-family: "Segoe UI", "Microsoft YaHei UI", system-ui, sans-serif;
+    color: var(--text);
+    background-color: #05080e;
+    background-image:
+      linear-gradient(90deg, rgba(4,9,16,0.90) 0%, rgba(4,9,16,0.58) 26%, rgba(4,9,16,0.12) 58%, rgba(4,9,16,0.38) 100%),
+      linear-gradient(180deg, rgba(4,9,16,0.55) 0%, rgba(4,9,16,0.08) 32%, rgba(4,9,16,0.20) 72%, rgba(4,9,16,0.78) 100%),
+      url("assets/background.jpg");
+    background-position: center, center, center 28%;
+    background-size: cover, cover, cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed, fixed, fixed;
+    overflow: hidden;
+  }
+  .app { display: flex; height: 100vh; }
+  .sidebar {
+    width: 288px;
+    background: var(--sidebar);
+    border-right: 1px solid var(--border-1);
+    display: flex; flex-direction: column; padding: 18px 14px;
+  }
+  .brand { display: flex; align-items: center; gap: 10px; padding: 8px 10px 22px; }
+  .whale { width: 30px; height: 30px; border-radius: 9px; background: linear-gradient(145deg, #8cc8ff, #2f6fb5); }
+  .brand b { font-size: 15px; letter-spacing: .2px; }
+  .brand span { color: var(--text-3); font-size: 11px; margin-left: auto; }
+  .nav { display: flex; flex-direction: column; gap: 4px; }
+  .nav a { color: var(--text-2); text-decoration: none; font-size: 13px; padding: 10px 12px; border-radius: 9px; }
+  .nav a.active { background: rgba(140,200,255,0.18); color: var(--text); border: 1px solid var(--border-2); }
+  .nav a:hover { background: rgba(140,200,255,0.09); }
+  .spacer { flex: 1; }
+  .recent { font-size: 11px; color: var(--text-3); padding: 16px 12px 8px; letter-spacing: .8px; text-transform: uppercase; }
+  .session { font-size: 12.5px; color: var(--text-2); padding: 8px 12px; border-radius: 8px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .session:hover { background: rgba(140,200,255,0.09); }
+  .main { flex: 1; min-width: 0; display: flex; flex-direction: column; background: var(--bg-base); }
+  .topbar { height: 56px; display: flex; align-items: center; padding: 0 24px; border-bottom: 1px solid var(--border-1); background: rgba(6,11,18,0.35); }
+  .topbar .title { font-size: 13px; color: var(--text-2); }
+  .topbar .pill { margin-left: auto; font-size: 11px; color: var(--accent); border: 1px solid var(--border-2); padding: 4px 10px; border-radius: 999px; }
+  .chat { flex: 1; overflow: hidden; padding: 28px clamp(24px, 7vw, 120px); display: flex; flex-direction: column; gap: 18px; }
+  .hero { margin-top: 8vh; }
+  .hero h1 { font-size: clamp(28px, 3.2vw, 44px); margin: 0 0 10px; font-weight: 500; letter-spacing: -.5px; }
+  .hero p { color: var(--text-2); font-size: 13.5px; margin: 0; }
+  .msg { max-width: 760px; font-size: 13.5px; line-height: 1.75; color: var(--text); }
+  .msg.user { align-self: flex-end; background: var(--bubble); border: 1px solid var(--border-2); padding: 12px 16px; border-radius: 14px; max-width: 520px; color: var(--text); }
+  .msg.bot { background: var(--layer-1); border: 1px solid var(--border-1); padding: 16px 18px; border-radius: 14px; }
+  .msg.bot .who { color: var(--accent); font-size: 11px; letter-spacing: .8px; text-transform: uppercase; margin-bottom: 8px; }
+  .code { background: rgba(3,7,12,0.65); border: 1px solid var(--border-1); border-radius: 8px; padding: 10px 12px; font: 12px/1.6 "Cascadia Code", Consolas, monospace; color: #cfe6ff; margin-top: 10px; }
+  .composer-wrap { padding: 16px clamp(24px, 7vw, 120px) 22px; }
+  .composer { background: var(--input); border: 1px solid var(--border-2); border-radius: 16px; padding: 14px 16px; display: flex; align-items: center; gap: 12px; box-shadow: 0 18px 50px rgba(0,0,0,0.28); }
+  .composer .text { color: var(--text-3); font-size: 13px; flex: 1; }
+  .composer .send { width: 30px; height: 30px; border-radius: 9px; background: var(--accent-strong); color: #fff; display: grid; place-items: center; font-size: 13px; }
+  .footer-note { position: fixed; right: 14px; bottom: 10px; color: rgba(233,243,255,0.55); font-size: 10px; letter-spacing: .4px; }
+</style>
+</head>
+<body>
+  <div class="app">
+    <aside class="sidebar">
+      <div class="brand"><div class="whale"></div><b>DeepSeek Harness</b><span>预览</span></div>
+      <nav class="nav">
+        <a class="active" href="#">新建对话</a>
+        <a href="#">探索未至之境</a>
+        <a href="#">技能</a>
+        <a href="#">插件</a>
+      </nav>
+      <div class="recent">最近</div>
+      <div class="session">绫波丽主题 · 配色调整</div>
+      <div class="session">EVA-01 背景测试</div>
+      <div class="session">深夜调试记录</div>
+      <div class="spacer"></div>
+      <div class="session">设置</div>
+    </aside>
+    <main class="main">
+      <div class="topbar"><div class="title">绫波丽主题 · 预览</div><div class="pill">ice blue</div></div>
+      <div class="chat">
+        <div class="hero">
+          <h1>晚上好。</h1>
+          <p>这是主题预览，布局与控件保持官方原样，只改背景与颜色。</p>
+        </div>
+        <div class="msg user">帮我把这个界面换成绫波丽的主题，别动布局。</div>
+        <div class="msg bot">
+          <div class="who">DeepSeek</div>
+          好。背景用这张图，面板改成半透明的深海蓝，文字提亮到冰蓝白；按钮、间距、圆角都不改。
+          <div class="code">body[data-dsh-ayanami] { background: ... center 28% / cover fixed; }</div>
+        </div>
+      </div>
+      <div class="composer-wrap">
+        <div class="composer"><div class="text">给 DeepSeek 发送消息…</div><div class="send">↑</div></div>
+      </div>
+    </main>
+  </div>
+  <div class="footer-note">preview · color and backdrop only</div>
+</body>
+</html>

@@ -1,0 +1,29 @@
+{
+  "name": "dsh-ayanami-theme",
+  "version": "0.0.1",
+  "private": true,
+  "type": "module",
+  "description": "Ayanami Rei theme for DeepSeek Harness: a fixed anime backdrop and translucent ice-blue surfaces, with the stock layout and controls untouched.",
+  "main": "lib/index.js",
+  "exports": {
+    ".": "./lib/index.js",
+    "./client": "./lib/client.js",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "lib",
+    "assets",
+    "cordis.patch.yml",
+    "README.md"
+  ],
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "platform": "web",
+      "inject": []
+    }
+  },
+  "license": "UNLICENSED"
+}
