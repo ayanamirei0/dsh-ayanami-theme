@@ -1,6 +1,6 @@
 {
   "name": "dsh-ayanami-theme",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "private": true,
   "type": "module",
   "description": "Ayanami Rei theme for DeepSeek Harness: a fixed anime backdrop and translucent ice-blue surfaces, with the stock layout and controls untouched.",
