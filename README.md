@@ -19,7 +19,7 @@
 1. 克隆到你喜欢的目录（下面以 `~/.dsh/plugin-src/dsh-ayanami-theme` 为例）：
 
    ```powershell
-   git clone https://github.com/USERNAME/dsh-ayanami-theme.git "$env:USERPROFILE\.dsh\plugin-src\dsh-ayanami-theme"
+   git clone https://github.com/ayanamirei0/dsh-ayanami-theme.git "$env:USERPROFILE\.dsh\plugin-src\dsh-ayanami-theme"
    ```
 
 2. 把插件链接到 `desktop` profile（把 `<DSH 安装目录>` 换成你自己的，例如 `D:\software\dsh`）：
@@ -79,7 +79,7 @@ preview.html      单页预览，preview.png 由它渲染
 ## 兼容性
 
 - 面向 DeepSeek Harness 桌面端（Electron + `dsh-app://app` 源），纯客户端注入，不依赖具体版本 API。
-- 已在本机 macOS/Windows 之外的平台未测试；如遇样式错位，多半是 `--dsw-*` 令牌改名，按 `TOKENS` 表对照修正。
+- 在 Windows + DSH 桌面端（Electron）实测通过，其他平台未验证。若遇样式错位，多半是 `--dsw-*` 令牌已改名，按 `TOKENS` 表对照修正。
 
 ## 版权与免责
 
